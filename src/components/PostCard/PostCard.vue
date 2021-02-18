@@ -2,7 +2,7 @@
     <v-card
             elevation="1"
             class="mb-4 rounded-lg">
-        <div class="pa-5">
+        <div class="pt-5 pr-5 pl-5">
             <v-list>
                 <v-skeleton-loader
                         type="list-item-avatar-two-line"
@@ -53,7 +53,7 @@
             </v-carousel-item>
         </v-carousel>
 
-        <div class="pa-5">
+        <div class="pl-5 pr-5 pb-5">
             <v-card-text
                     v-html="parseURLs(hashBold(data.text))"
                     v-if="data.text"
