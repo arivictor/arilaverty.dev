@@ -16,7 +16,7 @@
 
             <v-card-text>
                 <v-alert type="success" text v-if="copied">Copied to clipboard</v-alert>
-               <v-text-field @focus="copyToClipboard" :color="copied ? 'green accent-4':'primary'" ref="postShareUrl" :value="shareLink" filled readonly :append-icon="copied ? 'mdi-check':'mdi-clipboard-outline'" @click:append="copyToClipboard"></v-text-field>
+               <v-text-field @focus="copyToClipboard" :color="copied ? 'green accent-4':'primary'" ref="postShareUrl" :value="shareLink" readonly :append-icon="copied ? 'mdi-check':'mdi-clipboard-outline'" @click:append="copyToClipboard"></v-text-field>
             </v-card-text>
         </v-card>
     </v-dialog>
