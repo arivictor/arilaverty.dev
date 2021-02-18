@@ -27,13 +27,13 @@
         name: "PostShareDialog",
 
         created() {
-            this.shareLink = "http://arilaverty.com/post/" + this.data;
+            this.shareLink = "http://arilaverty.dev/post/" + this.data;
         },
 
         data: () => ({
             copied: false,
             dialog: false,
-            shareLink: "http://arilaverty.com",
+            shareLink: "http://arilaverty.dev",
         }),
 
         methods: {
