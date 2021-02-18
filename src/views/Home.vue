@@ -45,7 +45,6 @@
                     this.posts = postsArray;
                 })
             } else {
-                console.log("no tag")
                 fb.postsCollection.orderBy('createdTime', 'desc').onSnapshot(snapshot => {
                     let postsArray = []
                     snapshot.forEach(doc => {
