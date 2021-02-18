@@ -1,4 +1,16 @@
-# arilaverty
+![screenshot](screenshot.png)
+# arilaverty.dev
+Personal site the demonstrates VueJS and integration with GCP services:
+* Firestore
+* Firebase Auth
+
+## Features
+* Signup
+* Login
+* Password Reset
+* Image Upload
+* Post Commenting
+* Post Sharing / Liking
 
 ## Project setup
 ```
