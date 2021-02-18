@@ -120,14 +120,11 @@
                 })
             },
 
-            findTags: function(value) {
+            findTags: function (value) {
                 console.log(value)
                 value = value.toString();
                 let hashReg = /#\w+/gm;
-                let tags = value.match(hashReg)
-                tags = tags.map(x => x.replace("#", "").toLowerCase());
-                console.log(tags)
-                return tags
+                return value.match(hashReg)
             },
 
             createPost(imageURIs) {
@@ -159,7 +156,7 @@
                     const filename = uuidv4();
                     const ext = image.name.split('.').pop();
                     const name = `${filename}${ext}`;
-                    const task = fb.storage.child(name).put(image, { contentType: image.type });
+                    const task = fb.storage.child(name).put(image, {contentType: image.type});
                     promises.push(task);
                 });
 
