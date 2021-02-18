@@ -1,37 +1,39 @@
 <template>
     <v-card
             elevation="1"
-            class="mb-4 pa-5 rounded-lg">
-        <v-list>
-            <v-skeleton-loader
-                    type="list-item-avatar-two-line"
-                    v-if="userData === null"
-            ></v-skeleton-loader>
-            <v-list-item v-else>
-                <v-list-item-avatar
-                        class="elevation-1 white--text"
-                        :color="userData.picture ? 'white':'primary'"
-                        size="50"
-                >
-                    <v-img
-                            :src="userData.picture"
-                            v-if="userData && userData.picture"
-                    ></v-img>
-                    <span v-else>{{ userData.name.slice(0,1) }}</span>
-                </v-list-item-avatar>
-                <v-list-item-content>
-                    <v-list-item-title
-                            v-text="userData.name"
-                    ></v-list-item-title>
-                    <v-list-item-subtitle
-                            v-text="formatDate(data.createdTime)"
-                    ></v-list-item-subtitle>
-                </v-list-item-content>
-                <v-list-item-action>
-                    <post-card-menu :data="data"></post-card-menu>
-                </v-list-item-action>
-            </v-list-item>
-        </v-list>
+            class="mb-4 rounded-lg">
+        <div class="pa-5">
+            <v-list>
+                <v-skeleton-loader
+                        type="list-item-avatar-two-line"
+                        v-if="userData === null"
+                ></v-skeleton-loader>
+                <v-list-item v-else>
+                    <v-list-item-avatar
+                            class="elevation-1 white--text"
+                            :color="userData.picture ? 'white':'primary'"
+                            size="50"
+                    >
+                        <v-img
+                                :src="userData.picture"
+                                v-if="userData && userData.picture"
+                        ></v-img>
+                        <span v-else>{{ userData.name.slice(0,1) }}</span>
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                        <v-list-item-title
+                                v-text="userData.name"
+                        ></v-list-item-title>
+                        <v-list-item-subtitle
+                                v-text="formatDate(data.createdTime)"
+                        ></v-list-item-subtitle>
+                    </v-list-item-content>
+                    <v-list-item-action>
+                        <post-card-menu :data="data"></post-card-menu>
+                    </v-list-item-action>
+                </v-list-item>
+            </v-list>
+        </div>
 
         <v-carousel
                 v-model="imageCarousel"
@@ -44,7 +46,6 @@
                     :key="i"
             >
                 <v-img
-                        class="rounded-lg"
                         :src="image"
                         :max-height="imageDefaultHeight"
                 >
@@ -52,56 +53,58 @@
             </v-carousel-item>
         </v-carousel>
 
-        <v-card-text
-                v-html="parseURLs(hashBold(data.text))"
-                v-if="data.text"
-        >
-        </v-card-text>
-        <v-card-actions>
-            <v-btn
-                    icon
-                    @click="likePost"
-                    large>
-                <v-badge
-                        :content="data.likes"
-                        :value="data.likes"
-                        overlap
-                        left>
+        <div class="pa-5">
+            <v-card-text
+                    v-html="parseURLs(hashBold(data.text))"
+                    v-if="data.text"
+            >
+            </v-card-text>
+            <v-card-actions>
+                <v-btn
+                        icon
+                        @click="likePost"
+                        large>
+                    <v-badge
+                            :content="data.likes"
+                            :value="data.likes"
+                            overlap
+                            left>
+                        <v-icon
+                                v-text="'mdi-heart-outline'"
+                        ></v-icon>
+                    </v-badge>
+                </v-btn>
+                <v-btn
+                        @click.stop="toggleComments = !toggleComments"
+                        icon
+                        large>
                     <v-icon
-                            v-text="'mdi-heart-outline'"
+                            v-text="'mdi-comment'"
+                            v-if="toggleComments"
                     ></v-icon>
-                </v-badge>
-            </v-btn>
-            <v-btn
-                    @click.stop="toggleComments = !toggleComments"
-                    icon
-                    large>
-                <v-icon
-                        v-text="'mdi-comment'"
-                        v-if="toggleComments"
-                ></v-icon>
-                <v-icon
-                        v-text="'mdi-comment-outline'"
-                        v-else
-                ></v-icon>
-            </v-btn>
-            <v-spacer></v-spacer>
-            <post-share-dialog :data="data.id"></post-share-dialog>
-        </v-card-actions>
-        <v-card-text v-if="toggleComments">
-            <post-comments :data="comments"></post-comments>
-            <v-form @submit.prevent="addComment">
-                <v-text-field
-                        :disabled="!isSignedIn"
-                        append-icon="mdi-comment-outline"
-                        clearable
-                        outlined
-                        placeholder="Write a comment..."
-                        v-model="comment"
-                        @click:append="addComment"
-                ></v-text-field>
-            </v-form>
-        </v-card-text>
+                    <v-icon
+                            v-text="'mdi-comment-outline'"
+                            v-else
+                    ></v-icon>
+                </v-btn>
+                <v-spacer></v-spacer>
+                <post-share-dialog :data="data.id"></post-share-dialog>
+            </v-card-actions>
+            <v-card-text v-if="toggleComments">
+                <post-comments :data="comments"></post-comments>
+                <v-form @submit.prevent="addComment">
+                    <v-text-field
+                            :disabled="!isSignedIn"
+                            append-icon="mdi-comment-outline"
+                            clearable
+                            outlined
+                            placeholder="Write a comment..."
+                            v-model="comment"
+                            @click:append="addComment"
+                    ></v-text-field>
+                </v-form>
+            </v-card-text>
+        </div>
     </v-card>
 </template>
 
@@ -247,7 +250,5 @@
 </script>
 
 <style scoped>
-    .no-underline {
-        text-decoration: none !important;
-    }
+
 </style>
