@@ -121,10 +121,13 @@
             },
 
             findTags: function(value) {
+                console.log(value)
                 value = value.toString();
                 let hashReg = /#\w+/gm;
-                let tags = [...value.match(hashReg)];
-                return tags.map(x => x.replace("#", "").toLowerCase());
+                let tags = value.match(hashReg)
+                tags = tags.map(x => x.replace("#", "").toLowerCase());
+                console.log(tags)
+                return tags
             },
 
             createPost(imageURIs) {
