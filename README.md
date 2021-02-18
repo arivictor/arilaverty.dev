@@ -1,8 +1,12 @@
 ![screenshot](screenshot.png)
 # arilaverty.dev
-Personal site the demonstrates VueJS and integration with GCP services:
+Live: http://arilaverty.dev
+
+My personal site that demonstrates VueJS and integration with GCP services:
 * Firestore
 * Firebase Auth
+* App Engine
+* Cloud Run / Kubernetes
 
 ## Features
 * Signup
@@ -11,6 +15,10 @@ Personal site the demonstrates VueJS and integration with GCP services:
 * Image Upload
 * Post Commenting
 * Post Sharing / Liking
+
+## Deployment
+* `app.yaml` can be sued to deploy to AppEngine
+* Use the `Dockerfile` and `nginx.conf` for deployment to Cloud Run or Kubernetes as a container
 
 ## Project setup
 ```
