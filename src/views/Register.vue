@@ -58,7 +58,7 @@
                         </v-card-actions>
                     </v-form>
                 </v-card>
-                <p class="text-center">
+                <p class="text-center mt-5">
                     Already have an account?
                     <router-link :to="{name: 'SignIn'}">
                         Sign In
