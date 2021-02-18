@@ -1,0 +1,5 @@
+/src/firebase.js
+/node_modules/
+/dist/
+/yarn-error.log
+.idea/
